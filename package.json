@@ -1,0 +1,89 @@
+{
+  "name": "electron-react-template",
+  "version": "1.0.0",
+  "description": "A template for an electron app using react",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "start:dev": "cross-env ENVIRONMENT=dev electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "build": "webpack",
+    "build:watch": "webpack-dev-server --hot",
+    "lint": "eslint \"src/*.js\"",
+    "lint:fix": "eslint --fix \"src/*.js\"",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "prepare": "husky install",
+    "dev": "concurrently \"npm run start:dev\" \"npm run build:watch\""
+  },
+  "repository": "https://github.com/LindseyB/electron-react-template",
+  "lint-staged": {
+    "*.js": "eslint --fix src/*.js",
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "author": "LindseyB",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "concurrently": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "electron": "^16.0.7",
+    "eslint": "^8.7.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.1",
+    "prettier": "2.5.1",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "babel-loader": "^8.2.3",
+    "bulma": "^0.9.3",
+    "css-loader": "^6.5.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "node-sass": "^7.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.3.1"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electron_quick_start"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
